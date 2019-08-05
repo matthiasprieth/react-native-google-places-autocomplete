@@ -132,8 +132,12 @@ export default class GooglePlacesAutocomplete extends Component {
   componentWillReceiveProps(nextProps) {
     let listViewDisplayed = true;
 
+    // // this seems to be buggy
+    // if (nextProps.listViewDisplayed !== 'auto') {
+    //   listViewDisplayed = nextProps.listViewDisplayed;
+    // }
     if (nextProps.listViewDisplayed !== 'auto') {
-      listViewDisplayed = nextProps.listViewDisplayed;
+      listViewDisplayed = false;
     }
 
     if (typeof (nextProps.text) !== "undefined" && this.state.text !== nextProps.text) {
@@ -723,7 +727,8 @@ export default class GooglePlacesAutocomplete extends Component {
               onSubmitEditing={this.props.onSubmitEditing}
               placeholderTextColor={this.props.placeholderTextColor}
               onFocus={onFocus ? () => {this._onFocus(); onFocus()} : this._onFocus}
-              onBlur={this._onBlur}
+              // // this seems to be buggy
+              // onBlur={this._onBlur}
               underlineColorAndroid={this.props.underlineColorAndroid}
               clearButtonMode={
                 clearButtonMode ? clearButtonMode : "while-editing"
